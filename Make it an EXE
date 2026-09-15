@@ -1,0 +1,30 @@
+The cleanest way to run this on your Helpdesk is to wrap the PowerShell GUI as a Windows .exe, so Helpdesk gets something like:
+
+LAPS Password Lookup.exe
+
+Double-click it, GUI opens, no PowerShell window, no script execution-policy hassle for the technician.
+
+Use PS2EXE. On the machine you use to build it, open an elevated powershell console:
+
+Install-Module ps2exe -Scope CurrentUser
+
+Then:
+
+Invoke-PS2EXE `
+    -InputFile ".\LAPS-Modern.ps1" `
+    -OutputFile ".\LAPS-Password-Lookup.exe" `
+    -NoConsole `
+    -x64 `
+    -Title "LAPS Password Lookup" `
+    -Product "Helpdesk Tools" `
+    -Company "<insert company name here>" `
+    -Version "1.0.0.0"
+
+The resulting EXE still uses the Windows LAPS PowerShell components on the workstation, so your existing prerequisite remains:
+
+Get-LapsADPassword
+
+must be available, and the signed-in Helpdesk technician's AD permissions still control what passwords they can retrieve. It doesn't embed elevated credentials or bypass LAPS security.
+
+One thing I'd strongly recommend before deploying it widely: code-sign the EXE with your organization's code-signing certificate if you have one. PowerShell-to-EXE wrappers can sometimes 
+attract EDR/AV scrutiny simply because malware also uses that packaging technique. A signed internal Helpdesk utility is much cleaner operationally.

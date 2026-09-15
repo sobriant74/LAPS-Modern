@@ -1,4 +1,5 @@
-﻿#requires -Version 5.1
+#caveat emptor, no warranties are implied or given. That being said, it works well for on-prem AD, enjoy!
+ #requires -Version 5.1
 <#
 .SYNOPSIS
     Simple Windows LAPS password viewer for Helpdesk.

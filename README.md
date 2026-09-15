@@ -32,3 +32,21 @@ Run:
 
 ```powershell
 .\Windows-LAPS-Helpdesk.ps1
+
+Or launch with:
+
+powershell.exe -ExecutionPolicy Bypass -File .\Windows-LAPS-Helpdesk.ps1
+Required LAPS command
+
+The computer running the tool must have:
+
+Get-LapsADPassword
+
+available.
+
+Security
+
+This tool does not contain or store administrator credentials.
+
+Password access is controlled entirely by your existing Windows LAPS
+Active Directory permissions.

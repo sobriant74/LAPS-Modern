@@ -31,11 +31,11 @@ It does not store credentials or bypass Active Directory permissions.
 Run:
 
 ```powershell
-.\Windows-LAPS-Helpdesk.ps1
+.\LAPS-Modern.ps1
 
 Or launch with:
 
-powershell.exe -ExecutionPolicy Bypass -File .\Windows-LAPS-Helpdesk.ps1
+powershell.exe -ExecutionPolicy Bypass -File .\LAPS-Modern.ps1
 Required LAPS command
 
 The computer running the tool must have:
